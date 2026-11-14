@@ -1,13 +1,4 @@
-Aspetto,Pregi,Difetti
-Costo,Molto economico (circa 20€ - 35€ totali per tutti i componenti elettronici).,Richiede l'acquisto di più moduli separati e cavetteria.
-Qualità Audio,"Ottima sulle sorgenti digitali grazie ai DAC I2S dedicati (evitando il DAC interno dell'ESP32, molto rumoroso).",La Radio FM soffre facilmente di interferenze elettromagnetiche generate dal Wi-Fi dell'ESP32 se i cavi non sono ben schermati.
-Spotify,Funziona come uno speaker smart commerciale (controllabile da smartphone/PC senza usare il Bluetooth).,"Richiede obbligatoriamente un account Spotify Premium. Inoltre, le API di Spotify cambiano spesso, richiedendo aggiornamenti al firmware."
-Complessità Software,Esistono già ottimi progetti pronti su GitHub (es. StreamCore32 o Euphonium).,Unire un firmware complesso basato su ESP-IDF (necessario per Spotify) con semplici librerie Arduino (spesso usate per la radio FM) richiede buone competenze di programmazione C++.
-Consumi,Basso consumo energetico; alimentabile facilmente via USB-C o batteria LiPo.,"Il Wi-Fi attivo per Spotify assorbe parecchi picchi di corrente (fino a 300-400 mA), richiedendo un'alimentazione stabile."
-
-Aggiungi il dab. Accensione istantanea del sistema. Eventuale sveglia.
-
-Progetto Radio ESP32 Spotify FM
+# Progetto Radio ESP32 Spotify FM
 https://share.gemini.google/OUywT9nLrniZ
 Creato con Auto 14 novembre 2026 alle ore 15:31
 Data di pubblicazione: 14 novembre 2026 alle ore 20:08
@@ -18,28 +9,27 @@ Makerfabs
 
 1. Architettura Hardware Consigliata
 Per gestire tutto senza blocchi o problemi di memoria, la configurazione ideale prevede:
+- Microcontrollore: ESP32-S3 (con almeno 8 MB di PSRAM) oppure ESP32-WROVER. La memoria PSRAM aggiuntiva è indispensabile per il buffering audio di Spotify.
 
-Microcontrollore: ESP32-S3 (con almeno 8 MB di PSRAM) oppure ESP32-WROVER. La memoria PSRAM aggiuntiva è indispensabile per il buffering audio di Spotify.
-
-Audio Digitale (MP3 e Spotify): Un DAC I2S esterno come il PCM5102A (per uscita cuffie/amplificatore) o il MAX98357A (che integra già un amplificatore mono da 3W per un piccolo altoparlante).   
+- Audio Digitale (MP3 e Spotify): Un DAC I2S esterno come il PCM5102A (per uscita cuffie/amplificatore) o il MAX98357A (che integra già un amplificatore mono da 3W per un piccolo altoparlante).   
 YouTube
 
-Radio FM: Un modulo sintonizzatore controllabile via bus I2C, come l'RDA5807M (consigliato per qualità e supporto RDS) o il TEA5767.
+- Radio FM: Un modulo sintonizzatore controllabile via bus I2C, come l'RDA5807M (consigliato per qualità e supporto RDS) o il TEA5767.
 
-Storage MP3: Uno slot per scheda MicroSD collegato via SPI (spesso già integrato nelle schede di sviluppo o nei display TFT).   
+- Storage MP3: Uno slot per scheda MicroSD collegato via SPI (spesso già integrato nelle schede di sviluppo o nei display TFT).   
 YouTube
 
-Interfaccia: Un display OLED I2C (es. SSD1306 da 0.96" o 1.3") o un TFT SPI più un encoder rotativo per cambiare stazione, brano e volume.   
+- Interfaccia: Un display OLED I2C (es. SSD1306 da 0.96" o 1.3") o un TFT SPI più un encoder rotativo per cambiare stazione, brano e volume.   
 YouTube
 
 2. Come funzionano le 3 sorgenti audio
-Lettore MP3: Si utilizza la libreria ESP32-audioI2S. Legge i file dalla MicroSD e invia il flusso decodificato al DAC I2S.   
+- Lettore MP3: Si utilizza la libreria ESP32-audioI2S. Legge i file dalla MicroSD e invia il flusso decodificato al DAC I2S.   
 Makerfabs
 
-Spotify: Non esiste un'app nativa autonoma su ESP32. Si usa il protocollo Spotify Connect tramite librerie open-source come cspot o firmware completi come Squeezelite-ESP32 / StreamCore32. Il dispositivo appare tra gli altoparlanti disponibili sull'app Spotify del telefono, ma lo streaming avviene direttamente dal router all'ESP32.   
+- Spotify: Non esiste un'app nativa autonoma su ESP32. Si usa il protocollo Spotify Connect tramite librerie open-source come cspot o firmware completi come Squeezelite-ESP32 / StreamCore32. Il dispositivo appare tra gli altoparlanti disponibili sull'app Spotify del telefono, ma lo streaming avviene direttamente dal router all'ESP32.   
 GitHub
 
-Radio FM: Il modulo RDA5807M riceve il segnale analogico e lo invia direttamente all'amplificatore, mentre l'ESP32 si limita a inviare i comandi di cambio frequenza via I2C. (Nota: servirà un piccolo mixer resistivo o un selettore analogico per unire l'audio del modulo FM con quello del DAC I2S).
+- Radio FM: Il modulo RDA5807M riceve il segnale analogico e lo invia direttamente all'amplificatore, mentre l'ESP32 si limita a inviare i comandi di cambio frequenza via I2C. (Nota: servirà un piccolo mixer resistivo o un selettore analogico per unire l'audio del modulo FM con quello del DAC I2S).
 
 3. Pregi e Difetti del Progetto
 Aspetto	Pregi	Difetti
