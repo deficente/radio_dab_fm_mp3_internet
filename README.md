@@ -20,7 +20,14 @@ Ogni lezione deve essere caratterizzata:
 - istruzioni
 - test di funzionamento
 
-Ogni lezione deve portare alla costruzione della radio finale
+Ogni lezione deve portare alla costruzione della radio finale.
+
+Prima di iniziare la creazione del progetto, 
+- cerca in rete se esiste qualcosa di simili
+- analizza ed individua i componenti, cercando quelli di uso comune 
+- evidenzia particolari criticità
+ 
+le criticità
 
 
 
