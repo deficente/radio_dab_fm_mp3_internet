@@ -1,6 +1,10 @@
 # radio_dab_fm_mp3_internet
 radio_dab_fm_mp3_internet
 
+# link
+
+https://share.gemini.google/jpRujcPgDXnE
+
 # Obiettivo 
 
 Creare una serie di lezioni passo passo per un corso per la creazione di una radio con le seguenti caratteristiche:
@@ -26,7 +30,7 @@ Prima di iniziare la creazione del progetto,
 - cerca in rete se esiste qualcosa di simili
 - analizza ed individua i componenti, cercando quelli di uso comune 
 - evidenzia particolari criticità
- 
+
 le criticità
 
 
